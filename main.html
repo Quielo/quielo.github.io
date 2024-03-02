@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth Redirect Handler</title>
+</head>
+<body>
+    <script>
+        // Function to extract the 'code' parameter from the URL
+        function getCodeFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('code'); // Assuming the URL parameter is named 'code'
+        }
+
+        // Redirect function
+        function redirectToApp() {
+            const code = getCodeFromUrl();
+            if (code) {
+                // Construct the deep link with the code
+                // Ensure your deep link structure is correctly defined here
+                const deepLinkUrl = `yourapp://oauth?code=${code}`;
+                // Redirect to the deep link
+                window.location.href = deepLinkUrl;
+            } else {
+                console.log('Authorization code not found.');
+            }
+        }
+
+        // Execute redirect on page load
+        redirectToApp();
+    </script>
+</body>
+</html>
