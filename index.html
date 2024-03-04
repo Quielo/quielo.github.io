@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Redirect Handler</title>
+</head>
+<body>
+    <script>
+        // Function to extract the 'code' parameter from the full URL
+        function getCodeFromUrl() {
+            // Assuming the URL format is https://{URL}/?code={codeString}#_
+            const url = new URL(window.location.href); // Get the current URL
+            return url.searchParams.get('code'); // Extract the 'code' parameter
+        }
+
+        // Redirect function
+        function redirectToAppWithCode() {
+            const code = getCodeFromUrl();
+            if (code) {
+                // Define your redirect URL and attach the extracted code
+                // Replace 'https://anotherexample.com/' with your actual redirect URL
+                const redirectUrl = `https://anotherexample.com/?code=${code}`;
+                // Redirect to the new URL with the code
+                window.location.href = redirectUrl;
+            } else {
+                console.log('Code not found in URL.');
+            }
+        }
+
+        // Execute redirect on page load
+        redirectToAppWithCode();
+    </script>
+</body>
+</html>
